@@ -1,9 +1,9 @@
-__int64 __fastcall PsSetCreateThreadNotifyRoutine(__int64 NotifyRoutine)
+NTSTATUS __fastcall PsSetCreateThreadNotifyRoutine(__int64 NotifyRoutine)
 {
-  return sub_1407459C0(NotifyRoutine, 0i64);
+  return PspSetCreateThreadNotifyRoutine(NotifyRoutine, 0i64);
 }
 
-__int64 __fastcall sub_1407459C0(__int64 NotifyRoutine, unsigned int a2)
+NTSTATUS __fastcall PspSetCreateThreadNotifyRoutine(__int64 NotifyRoutine, unsigned int a2)
 {
   char v2; // si
   __int64 CallbackObject; // rdi
