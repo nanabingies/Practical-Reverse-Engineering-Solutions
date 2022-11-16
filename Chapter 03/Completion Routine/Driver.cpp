@@ -73,5 +73,6 @@ EXTERN_C NTSTATUS IoCompletionRoutine(_In_ _DEVICE_OBJECT* DeviceObject, _In_ _I
 }
 
 EXTERN_C VOID DriverUnload(_In_ _DRIVER_OBJECT* DriverObject) {
+	IoDetachDevice(static_cast<PDEVICE_OBJECT>(g_ExtDevObj));
 	IoDeleteDevice(DriverObject->DeviceObject);
 }
