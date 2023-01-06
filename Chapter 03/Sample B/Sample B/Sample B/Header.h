@@ -29,6 +29,7 @@ ULONG dword_40A9A4, dword_40A9A0;
 ULONG64 qword_40AED8, qword_40AEE0;
 ULONG64 qword_40AEF0;
 PVOID64 Dispatch_Irp_Mj_Internal_Dev_Ctl, Dispatch_Irp_Mj_Dev_Ctl;
+ERESOURCE _eresource1{}, _eresource2{};
 
 EXTERN_C PDRIVER_DISPATCH sub_402334;
 EXTERN_C void PcreateProcessNotifyRoutine(_In_ HANDLE ParentId, _In_ HANDLE ProcessId, _In_ BOOLEAN Create);

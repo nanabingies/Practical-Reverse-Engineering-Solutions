@@ -11,7 +11,6 @@ EXTERN_C NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_ST
 	ULONG64 qword_40B1D0;
 	LIST_ENTRY qword_40A5F8, qword_40A828, qword_40A590;
 	BYTE byte_40AA6C;
-	ERESOURCE _eresource1{}, _eresource2{};
 	UNICODE_STRING usHardDisk{};
 	OBJECT_ATTRIBUTES oa{};
 	HANDLE fileHandle, threadHandle1, threadHandle2;
