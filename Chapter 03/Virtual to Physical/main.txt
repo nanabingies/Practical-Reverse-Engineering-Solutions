@@ -37,4 +37,3 @@ Evaluate expression: 36329920 = 00000000`022a59c0		<--- Physical Address
 
 kd> !db 00000000`022a59c0					<--- Read contents of Physical Address
 # 22a59c0 48 89 5c 24 10 44 89 4c-24 20 55 56 57 41 54 41 H.\$.D.L$ UVWATA
-
