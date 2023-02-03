@@ -1,0 +1,39 @@
+kd> !process 4 0
+Searching for Process with Cid == 4
+PROCESS ffffa98f3245f2c0
+    SessionId: none  Cid: 0004    Peb: 00000000  ParentCid: 0000
+    DirBase: 001ad002  ObjectTable: ffffd30cb0a04ac0  HandleCount: 2528.
+    Image: System
+
+kd> x nt!KeInsertQueueAPC
+fffff807`274a59c0 nt!KeInsertQueueApc (void)
+
+kd> ? (fffff807`274a59c0 >> 0n39) & 0x1FF
+Evaluate expression: 496 = 00000000`000001f0			<--- PML4i
+
+kd> !dq (001ad002 + (00000000`000001f0*8)) L1				// we multiply by size of the paging structure (0x8)
+#  1adf80 00000000`03e08063					<--- PML4e
+
+kd> ? (fffff807`274a59c0 >> 0n30) & 0x1FF
+Evaluate expression: 28 = 00000000`0000001c			<--- PDPTi
+
+kd> !dq (00000000`03e08063 & 0xFFFFFFFFFF000) + (00000000`0000001c * 8) L1
+# 3e080e0 00000000`03e09063					<--- PDPTe
+
+kd> ? (1 << 7) & 00000000`03e09063
+Evaluate expression: 0 = 00000000`00000000			<--- Check if bit 7 is set (Large page enabled)
+
+kd> ? (fffff807`274a59c0 >> 0n21) & 0x1FF
+Evaluate expression: 314 = 00000000`0000013a			<--- PDi
+
+kd> !dq (00000000`03e09063 & 0xFFFFFFFFFF000) + (00000000`0000013a * 8) L1
+# 3e099d0 00000000`022008e3					<-- PDe
+
+kd> ? (1 << 7) & 00000000`022008e3
+Evaluate expression: 128 = 00000000`00000080			<--- Large Page enabled
+
+kd> ? (00000000`022008e3 & 0xFFFFFFFFFF000) + (fffff807`274a59c0 & 0x1fffff)
+Evaluate expression: 36329920 = 00000000`022a59c0		<--- Physical Address
+
+kd> !db 00000000`022a59c0					<--- Read contents of Physical Address
+# 22a59c0 48 89 5c 24 10 44 89 4c-24 20 55 56 57 41 54 41 H.\$.D.L$ UVWATA
