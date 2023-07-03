@@ -1,3 +1,34 @@
 
 1. KiInsertQueueApc
-This function inserts an APC object into a thread's APC queue. It's parameters is an object to a KAPC object and a KPRIORITY integer.
+This function inserts an APC object into a thread's APC queue. 
+
+Arguments:
+
+    KAPC apc -- pointer to a KAPC object
+
+    KPRIORITY 
+
+
+2. PsExitSpecialApc
+Exit kernel mode APC routine.
+
+Arguments:
+
+    Apc  -- Pointer to the KAPC object
+    NormalRoutine -- Pointer to PKNORMAL_ROUTINE Callback
+    NormalContext -- Pointer to the NormalContext to set in Apc
+    IN PVOID *SystemArgument1,
+    IN PVOID *SystemArgument2
+
+
+6. KiDeliverApc
+This function is called from the APC interrupt code and when one or more of the APC pending flags are set at system exit and the previous
+IRQL is zero.
+
+Arguments:
+
+    PreviousMode - The previous processor mode.
+
+    ExceptionFrame - Pointer to an exception frame.
+
+    TrapFrame - Pointer to a trap frame.
