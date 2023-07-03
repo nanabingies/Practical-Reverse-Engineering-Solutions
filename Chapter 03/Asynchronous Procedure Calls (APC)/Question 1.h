@@ -1,6 +1,10 @@
 #pragma once
 
-#include "stdafx.h"
+#include <ntifs.h>
+#include <wdm.h>
+#include <ntddk.h>
+#include <intrin.h>
+
 #pragma warning(disable : 4214)
 #pragma warning(disable : 4201)
 
