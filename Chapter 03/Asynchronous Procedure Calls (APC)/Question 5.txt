@@ -4,9 +4,10 @@ This function inserts an APC object into a thread's APC queue.
 
 Arguments:
 
-    KAPC apc -- pointer to a KAPC object
+    Apc - Pointer to a KAPC object
 
-    KPRIORITY 
+    Increment - The priority increment that is to be applied if queuing the APC causes a thread wait to be satisfied.
+
 
 
 2. PsExitSpecialApc
@@ -14,11 +15,21 @@ Exit kernel mode APC routine.
 
 Arguments:
 
-    Apc  -- Pointer to the KAPC object
-    NormalRoutine -- Pointer to PKNORMAL_ROUTINE Callback
-    NormalContext -- Pointer to the NormalContext to set in Apc
-    IN PVOID *SystemArgument1,
-    IN PVOID *SystemArgument2
+    Apc  - Pointer to the KAPC object
+    NormalRoutine - Pointer to PKNORMAL_ROUTINE Callback
+    NormalContext - Pointer to the NormalContext to set in Apc
+    SystemArgument1 - Pointer to Argument 1
+    SystemArgument2 - Pointer to Argument 2
+
+
+
+3. PspExitApcRundown
+Thread Exit Apc Support
+
+Arguments:
+
+    Apc - Pointer to the KAPC object
+
 
 
 6. KiDeliverApc
