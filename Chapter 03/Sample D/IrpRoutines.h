@@ -10,3 +10,9 @@ NTSTATUS IrpCreateClose(_In_ PDEVICE_OBJECT DeviceObject, _In_ PIRP Irp) {
 	IoCompleteRequest(Irp, IO_NO_INCREMENT);
 	return STATUS_SUCCESS;
 }
+
+NTSTATUS IrpDeviceControl(_In_ PDEVICE_OBJECT DeviceObject, _In_ PIRP Irp) {
+	UNREFERENCED_PARAMETER(DeviceObject);
+
+
+}
