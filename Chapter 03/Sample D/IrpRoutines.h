@@ -13,6 +13,4 @@ NTSTATUS IrpCreateClose(_In_ PDEVICE_OBJECT DeviceObject, _In_ PIRP Irp) {
 
 NTSTATUS IrpDeviceControl(_In_ PDEVICE_OBJECT DeviceObject, _In_ PIRP Irp) {
 	UNREFERENCED_PARAMETER(DeviceObject);
-
-
 }
