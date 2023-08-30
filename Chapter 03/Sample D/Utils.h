@@ -3,7 +3,7 @@
 
 PVOID dword_10003080;
 ULONG dword_10003020;
-PULONG dword_10003040;
+ULONG dword_10003040[0x10];
 
 VOID DisableWP() {
 	ULONG cr0 = __readcr0();
