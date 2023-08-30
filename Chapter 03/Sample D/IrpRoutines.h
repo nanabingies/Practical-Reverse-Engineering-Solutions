@@ -1,5 +1,5 @@
 #pragma once
-#include <ntddk.h>
+#include "Header.h"
 
 NTSTATUS IrpCreateClose(_In_ PDEVICE_OBJECT DeviceObject, _In_ PIRP Irp) {
 	UNREFERENCED_PARAMETER(DeviceObject);
