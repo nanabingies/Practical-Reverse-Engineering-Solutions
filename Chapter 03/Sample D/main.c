@@ -10,7 +10,7 @@ NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_STRING Regi
 
 	RtlInitUnicodeString(&drvName, L"\\Device\\ProcPanama");
 	status = IoCreateDevice(DriverObject, 0x1C, &drvName, FILE_DEVICE_UNKNOWN, NULL, FALSE, (PDEVICE_OBJECT*)&DeviceObject);
-	if (NT_SUCCES(status)) {
+	if (NT_SUCCESS(status)) {
 		RtlInitUnicodeString(&dosName, L"\\DosDevices\\ProcPanama");
 
 		status = IoCreateSymbolicLink(&dosName, &drvName);
